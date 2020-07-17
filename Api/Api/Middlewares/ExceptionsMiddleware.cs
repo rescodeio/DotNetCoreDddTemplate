@@ -7,6 +7,7 @@ using System.Security.Authentication;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace Api
 {
@@ -14,7 +15,7 @@ namespace Api
     {
         private static Dictionary<Type, Func<HttpStatusCode>> _map = new Dictionary<Type, Func<HttpStatusCode>> {
             { typeof(DbException), () => HttpStatusCode.InternalServerError },
-            // { typeof(NotFoundException), () => HttpStatusCode.NotFound },
+            { typeof(NotFoundException), () => HttpStatusCode.NotFound },
             { typeof(NotSupportedException), () =>  HttpStatusCode.BadRequest },
             { typeof(ArgumentNullException), () =>  HttpStatusCode.BadRequest },
             { typeof(ArgumentOutOfRangeException), () =>  HttpStatusCode.BadRequest },
@@ -47,7 +48,6 @@ namespace Api
 
         private async Task HandleException(HttpContext context, Exception exception)
         {
-            /*
             context.Response.StatusCode = (int)ExtractHttpStatus(exception);
             context.Response.ContentType = "application/json";
             var result = JsonConvert.SerializeObject(new
@@ -58,7 +58,6 @@ namespace Api
             await context.Response.WriteAsync(result);
             
             _logger.LogError(exception, exception.Message);
-            */
         }
 
         private static HttpStatusCode ExtractHttpStatus<T>(T exception) where T : Exception

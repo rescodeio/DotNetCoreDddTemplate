@@ -19,6 +19,9 @@
         <e p="Controllers" t="Include">
           <e p="UserController.cs" t="Include" />
         </e>
+        <e p="Exceptions" t="Include">
+          <e p="NotFoundException.cs" t="Include" />
+        </e>
         <e p="Middlewares" t="Include">
           <e p="ExceptionsMiddleware.cs" t="Include" />
         </e>

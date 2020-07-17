@@ -5,16 +5,16 @@ COPY *.sln .
 COPY Api/*.csproj ./Api/
 COPY Domain/*.csproj ./Domain/
 COPY Data/*.csproj ./Data/
-COPY Tests/UnitTests/*.csproj ./Tests/UnitTests/
-COPY Tests/IntegrationTests/*.csproj ./Tests/IntegrationTests/
+COPY UnitTests/*.csproj ./UnitTests/
+COPY IntegrationTests/*.csproj ./IntegrationTests/
 
 RUN dotnet restore
 
 COPY Api/. ./Api/
 COPY Domain/. ./Domain/
 COPY Data/. ./Data/
-COPY Tests/UnitTests/. ./Tests/UnitTests/
-COPY Tests/IntegrationTests/. ./Tests/IntegrationTests/
+COPY UnitTests/. ./UnitTests/
+COPY IntegrationTests/. ./IntegrationTests/
 
 RUN dotnet test -c Release
 
