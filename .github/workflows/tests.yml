@@ -13,11 +13,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Move to Api
-      run: cd Api
-    - name: ls
-      run: ls
-    - name: pwd
-      run: pwd
     - name: Run docker
-      run: cd Api && docker build .
+      run: docker build ./Api
