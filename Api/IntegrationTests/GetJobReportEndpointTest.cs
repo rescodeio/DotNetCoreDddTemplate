@@ -8,11 +8,11 @@ using Xunit;
 
 namespace IntegrationTests
 {
-    public class CreateJobTest : IClassFixture<WebApplicationFactory<Startup>>
+    public class GetJobReportEndpointTest : IClassFixture<WebApplicationFactory<Startup>>
     {
-        private readonly WebApplicationFactory<Api.Startup> _factory;
+        private readonly WebApplicationFactory<Startup> _factory;
 
-        public CreateJobTest(WebApplicationFactory<Api.Startup> factory)
+        public GetJobReportEndpointTest(WebApplicationFactory<Startup> factory)
         {
             _factory = factory;
         }

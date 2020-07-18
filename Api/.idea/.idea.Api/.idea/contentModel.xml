@@ -113,8 +113,9 @@
       </e>
       <e p="IntegrationTests" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
-        <e p="CreateJobTest.cs" t="Include" />
-        <e p="HealthCheck.cs" t="Include" />
+        <e p="CreateJobEndpointTest.cs" t="Include" />
+        <e p="GetJobReportEndpointTest.cs" t="Include" />
+        <e p="HealthCheckEndpointTest.cs" t="Include" />
         <e p="IntegrationTests.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -122,6 +123,10 @@
               <e p="IntegrationTests.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
+        </e>
+        <e p="TestUtils" t="Include">
+          <e p="HttpClientExtensions.cs" t="Include" />
+          <e p="HttpResponseMessageExtensions.cs" t="Include" />
         </e>
       </e>
       <e p="packages" t="ExcludeRecursive" />

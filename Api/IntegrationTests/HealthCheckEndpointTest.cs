@@ -4,11 +4,11 @@ using Xunit;
 
 namespace IntegrationTests
 {
-    public class HealthCheck : IClassFixture<WebApplicationFactory<Api.Startup>>
+    public class HealthCheckEndpointTest : IClassFixture<WebApplicationFactory<Api.Startup>>
     {
         private readonly WebApplicationFactory<Api.Startup> _factory;
 
-        public HealthCheck(WebApplicationFactory<Api.Startup> factory)
+        public HealthCheckEndpointTest(WebApplicationFactory<Api.Startup> factory)
         {
             _factory = factory;
         }
