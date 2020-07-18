@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Api.Services;
 using Data;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
@@ -14,11 +15,26 @@ namespace Api.Controllers
     {
         private readonly ILogger<UserController> _logger;
         private readonly IUserRepository _userRepository;
+        private readonly IEnumerable<ISomeService> _someServices;
 
-        public UserController(ILogger<UserController> logger, IUserRepository userRepository)
+        public UserController(ILogger<UserController> logger, IUserRepository userRepository, IEnumerable<ISomeService> someServices)
         {
             _logger = logger;
             _userRepository = userRepository;
+            _someServices = someServices;
+        }
+        
+        [HttpGet]
+        [Route("api/v1/user/info")]
+        public string GetInfo()
+        {
+            var response = "";
+            foreach (var service in _someServices)
+            {
+                response += $"{service.GetInfo()}\n";
+            }
+            
+            return response;
         }
 
         [HttpGet]

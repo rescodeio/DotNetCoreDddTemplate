@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Api.Services;
 using Data;
 using Domain;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,12 @@ namespace Api
             services.AddDbContext<MyContext>(DataInstaller.Install(_env.IsDevelopment()));
             services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
             
+            services.AddScoped(typeof(IDataInserter<MyContext>), typeof(EmptyInserter));
+            services.AddScoped(typeof(IDataInserter<MyContext>), typeof(FakeInserter));
+            
+            services.AddScoped(typeof(ISomeService), typeof(ServiceOne));
+            services.AddScoped(typeof(ISomeService), typeof(ServiceTwo));
+
             services.AddControllers();
             services.AddHealthChecks();
             services.AddOptions();
