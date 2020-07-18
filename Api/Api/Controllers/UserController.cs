@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Api.Services;
-using Data;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Api.Controllers
+namespace Api
 {
     [ApiController]
     public class UserController : ControllerBase
@@ -65,7 +62,7 @@ namespace Api.Controllers
         [Route("api/v1/user/generate/{name}")]
         public async Task Save(string name)
         {
-            var userEntity = new UserEntity(name);
+            var userEntity = new UserEntity(name, "", "");
             await _userRepository.Save(userEntity);
         }
     }
