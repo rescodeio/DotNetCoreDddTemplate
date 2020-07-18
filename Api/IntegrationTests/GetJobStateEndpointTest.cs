@@ -2,23 +2,24 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Api;
+using Domain;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
 using Xunit;
 
 namespace IntegrationTests
 {
-    public class GetJobReportEndpointTest : IClassFixture<WebApplicationFactory<Startup>>
+    public class GetJobStateEndpointTest : IClassFixture<WebApplicationFactory<Startup>>
     {
         private readonly WebApplicationFactory<Startup> _factory;
 
-        public GetJobReportEndpointTest(WebApplicationFactory<Startup> factory)
+        public GetJobStateEndpointTest(WebApplicationFactory<Startup> factory)
         {
             _factory = factory;
         }
 
         [Fact]
-        public async Task CanFetchJobReports()
+        public async Task CanFetchJobStates()
         {
             var client = _factory.CreateClient();
             var request = new CreateJobsRequest
@@ -36,14 +37,9 @@ namespace IntegrationTests
             
             var createResponse = await client.GetAsync("/api/v1/job/state");
             var statesBody = await createResponse.GetJsonBody<JobsStateResponse>();
-            
-            var reportResponse = await client.GetAsync($"/api/v1/job/report/{statesBody.States[0].Id}");
-
-            reportResponse.EnsureSuccessStatusCode();
-            
-            var reportBody = await reportResponse.GetJsonBody<JobReportResponse>();
-        
-            Assert.Empty(reportBody.Logs);
+            Assert.NotEmpty(statesBody.States);
+            Assert.NotEmpty(statesBody.States[0].Id);
+            Assert.Equal(JobState.Waiting ,statesBody.States[0].JobState);
         }
     }
 }

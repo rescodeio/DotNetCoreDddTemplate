@@ -30,6 +30,8 @@ namespace Data
         public async Task<Job> FindById(Guid id)
         {
             return await _context.Jobs
+                .Include(j => j.Logs)
+                .Include(j => j.DataPoints)
                 .FirstOrDefaultAsync(job => job.Id.Equals(id));
         }
 

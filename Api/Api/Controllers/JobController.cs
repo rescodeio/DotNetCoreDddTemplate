@@ -31,8 +31,8 @@ namespace Api.Controllers
         }
         
         [HttpGet]
-        [Route("api/v1/job/status")]
-        public async Task<JobsStateResponse> Status()
+        [Route("api/v1/job/state")]
+        public async Task<JobsStateResponse> State()
         {
             var result = await _getJobState.Get();
             return result;

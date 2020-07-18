@@ -115,6 +115,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="CreateJobEndpointTest.cs" t="Include" />
         <e p="GetJobReportEndpointTest.cs" t="Include" />
+        <e p="GetJobStateEndpointTest.cs" t="Include" />
         <e p="HealthCheckEndpointTest.cs" t="Include" />
         <e p="IntegrationTests.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">

@@ -4,12 +4,12 @@ namespace Api
 {
     public class JobsStateResponse
     {
-        public JobState[] States { get; set; }
+        public State[] States { get; set; }
 
-        public class JobState
+        public class State
         {
             public string Id { get; set; }
-            public Domain.JobState State { get; set; }
+            public JobState JobState { get; set; }
         }
     }
 }

@@ -16,14 +16,14 @@ namespace Api
         public async Task<JobsStateResponse> Get()
         {
             var jobs = await _jobRepository.FindAll();
-            var states = new List<JobsStateResponse.JobState>();
+            var states = new List<JobsStateResponse.State>();
 
             foreach (var job in jobs)
             {
-                var state = new JobsStateResponse.JobState
+                var state = new JobsStateResponse.State
                 {
                     Id = job.Id.ToString(),
-                    State = job.State,
+                    JobState = job.State,
                 };
                 states.Add(state);
             }
