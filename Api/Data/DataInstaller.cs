@@ -1,27 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
 namespace Data
 {
     public static class DataInstaller
     {
-        public static DbContext Install(bool isDev, ICollection<IDataInserter<MyContext>> inserters)
+        public static Action<DbContextOptionsBuilder> Install(bool isDevelopment)
         {
-            if (isDev)
+            if (!isDevelopment)
             {
-                var optionsBuilder = new DbContextOptionsBuilder<MyContext>();
-                optionsBuilder.UseInMemoryDatabase(typeof(MyContext).Name);
-                var context = new MyContext(optionsBuilder.Options);
-                foreach (var inserter in inserters)
-                {
-                    inserter.Insert(context);
-                }
-                
-                return context;
+                Console.Out.Write("No production ready data source implemented");
             }
-             
-            throw new Exception("No production ready data source implemented");
+            
+            return action => { action.UseInMemoryDatabase(typeof(MyContext).Name); };
         }
     }
 }

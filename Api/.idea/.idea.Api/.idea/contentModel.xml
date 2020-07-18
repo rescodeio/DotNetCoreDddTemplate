@@ -44,18 +44,25 @@
         <e p="Data.csproj" t="IncludeRecursive" />
         <e p="Data.csproj.DotSettings" t="Include" />
         <e p="DataInstaller.cs" t="Include" />
-        <e p="IDataInserter.cs" t="Include" />
-        <e p="Inserters" t="Include">
-          <e p="EmptyInserter.cs" t="Include" />
-          <e p="FakeInserter.cs" t="Include" />
+        <e p="MyContext" t="Include">
+          <e p="Inserters" t="Include">
+            <e p="EmptyInserter.cs" t="Include" />
+            <e p="FakeInserter.cs" t="Include" />
+          </e>
+          <e p="MyContext.cs" t="Include" />
+          <e p="Repositories" t="Include">
+            <e p="UserRepository.cs" t="Include" />
+          </e>
         </e>
-        <e p="MyContext.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
               <e p="Data.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
+        </e>
+        <e p="Shared" t="Include">
+          <e p="IDataInserter.cs" t="Include" />
         </e>
       </e>
       <e p="Domain" t="IncludeRecursive">
@@ -69,9 +76,17 @@
             </e>
           </e>
         </e>
+        <e p="Shared" t="Include">
+          <e p="Repositories" t="Include">
+            <e p="ICrudRepository.cs" t="Include" />
+          </e>
+        </e>
         <e p="User" t="Include">
           <e p="Entities" t="Include">
             <e p="UserEntity.cs" t="Include" />
+          </e>
+          <e p="Repositories" t="Include">
+            <e p="IUserRepository.cs" t="Include" />
           </e>
           <e p="UseCases" t="Include">
             <e p="ReverseName" t="Include">
@@ -93,6 +108,7 @@
             </e>
           </e>
         </e>
+        <e p="UserTest.cs" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="Tests" t="Include" />

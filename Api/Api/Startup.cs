@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Data;
+using Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -17,22 +18,23 @@ namespace Api
     public class Startup
     {
         private readonly IConfiguration _configuration;
-        
-        private IServiceCollection _services;
-        
+        private readonly IWebHostEnvironment _env;
+
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
+            _env = env;
             _configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
-        {
+        { 
+            services.AddDbContext<MyContext>(DataInstaller.Install(_env.IsDevelopment()));
+            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+            
             services.AddControllers();
             services.AddHealthChecks();
             services.AddOptions();
             services.AddMvc().AddControllersAsServices();
-            
-            _services = services;
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -50,13 +52,6 @@ namespace Api
                 endpoints.MapHealthChecks("/healthcheck");
                 endpoints.MapControllers();
             });
-
-            var inserters = new IDataInserter<MyContext>[]
-            {
-                new EmptyInserter(),  
-                new FakeInserter(),  
-            };
-            DataInstaller.Install(env.IsDevelopment(), inserters);
         }
     }
 }
