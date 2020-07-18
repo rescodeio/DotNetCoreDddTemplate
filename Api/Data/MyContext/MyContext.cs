@@ -9,6 +9,6 @@ namespace Data
         {
         }
         
-        public DbSet<UserEntity> Users { get; set; }
+        public DbSet<Job> Jobs { get; set; }
     }
 }

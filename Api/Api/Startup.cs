@@ -1,18 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Api.Services;
 using Data;
 using Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace Api
 {
@@ -30,13 +22,13 @@ namespace Api
         public void ConfigureServices(IServiceCollection services)
         { 
             services.AddDbContext<MyContext>(DataInstaller.Install(_env.IsDevelopment()));
-            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+            services.AddScoped(typeof(IJobRepository), typeof(JobRepository));
             
-            services.AddScoped(typeof(IDataInserter<MyContext>), typeof(EmptyInserter));
-            services.AddScoped(typeof(IDataInserter<MyContext>), typeof(FakeInserter));
-            
-            services.AddScoped(typeof(ISomeService), typeof(ServiceOne));
-            services.AddScoped(typeof(ISomeService), typeof(ServiceTwo));
+            services.AddScoped(typeof(JobType), defaultJobType => JobType.Batch );
+            services.AddScoped(typeof(JobFactory));
+            services.AddScoped(typeof(IGetJobReport), typeof(GetJobReport));
+            services.AddScoped(typeof(IGetJobState), typeof(GetJobState));
+            services.AddScoped(typeof(ICreateJob), typeof(CreateJob));
 
             services.AddControllers();
             services.AddHealthChecks();

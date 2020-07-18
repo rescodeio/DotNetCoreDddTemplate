@@ -1,10 +1,10 @@
-using Domain;
 using Xunit;
 
 namespace UnitTests
 {
-    public class ReverseNameUseCaseTest
+    public class JobTest
     {
+        /*
         [Theory]
         [InlineData("anna", WhitespacePolicy.DontIgnore, "anna", true)]
         [InlineData("sarah haras", WhitespacePolicy.DontIgnore, "sarah haras", true)]
@@ -41,5 +41,6 @@ namespace UnitTests
             var result = reverser.Reverse(name, whitespacePolicy);
             Assert.Equal(expected, result);
         }
+        */
     }
 }

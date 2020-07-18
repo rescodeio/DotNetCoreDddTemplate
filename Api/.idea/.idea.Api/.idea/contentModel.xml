@@ -17,7 +17,7 @@
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
-          <e p="UserController.cs" t="Include" />
+          <e p="JobController.cs" t="Include" />
         </e>
         <e p="Exceptions" t="Include">
           <e p="NotFoundException.cs" t="Include" />
@@ -37,9 +37,27 @@
           <e p="launchSettings.json" t="Include" />
         </e>
         <e p="Services" t="Include">
-          <e p="ISomeService.cs" t="Include" />
-          <e p="ServiceOne.cs" t="Include" />
-          <e p="ServiceTwo.cs" t="Include" />
+          <e p="CreateJob" t="Include">
+            <e p="CreateJob.cs" t="Include" />
+            <e p="CreateJobResponse.cs" t="Include" />
+            <e p="CreateJobsRequest.cs" t="Include" />
+            <e p="ICreateJob.cs" t="Include" />
+          </e>
+          <e p="GetJobReport" t="Include">
+            <e p="GetJobReport.cs" t="Include" />
+            <e p="IGetJobReport.cs" t="Include" />
+            <e p="JobReportResponse.cs" t="Include" />
+          </e>
+          <e p="GetJobState" t="Include">
+            <e p="GetJobState.cs" t="Include" />
+            <e p="IGetJobState.cs" t="Include" />
+            <e p="JobStateResponse.cs" t="Include" />
+          </e>
+          <e p="JobProcessor" t="Include">
+            <e p="FastFakeDataProcessor.cs" t="Include" />
+            <e p="IJobProcessor.cs" t="Include" />
+            <e p="SlowFakeDataProcessor.cs" t="Include" />
+          </e>
         </e>
         <e p="Startup.cs" t="Include" />
       </e>
@@ -50,13 +68,9 @@
         <e p="Data.csproj.DotSettings" t="Include" />
         <e p="DataInstaller.cs" t="Include" />
         <e p="MyContext" t="Include">
-          <e p="Inserters" t="Include">
-            <e p="EmptyInserter.cs" t="Include" />
-            <e p="FakeInserter.cs" t="Include" />
-          </e>
           <e p="MyContext.cs" t="Include" />
           <e p="Repositories" t="Include">
-            <e p="UserRepository.cs" t="Include" />
+            <e p="JobRepository.cs" t="Include" />
           </e>
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -66,14 +80,24 @@
             </e>
           </e>
         </e>
-        <e p="Shared" t="Include">
-          <e p="IDataInserter.cs" t="Include" />
-        </e>
       </e>
       <e p="Domain" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Domain.csproj" t="IncludeRecursive" />
         <e p="Domain.csproj.DotSettings" t="Include" />
+        <e p="Job" t="Include">
+          <e p="Entities" t="Include">
+            <e p="DataPoint.cs" t="Include" />
+            <e p="Job.cs" t="Include" />
+            <e p="JobFactory.cs" t="Include" />
+            <e p="JobState.cs" t="Include" />
+            <e p="JobType.cs" t="Include" />
+            <e p="Log.cs" t="Include" />
+          </e>
+          <e p="Repositories" t="Include">
+            <e p="IJobRepository.cs" t="Include" />
+          </e>
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
@@ -86,24 +110,10 @@
             <e p="ICrudRepository.cs" t="Include" />
           </e>
         </e>
-        <e p="User" t="Include">
-          <e p="Entities" t="Include">
-            <e p="UserEntity.cs" t="Include" />
-          </e>
-          <e p="Repositories" t="Include">
-            <e p="IUserRepository.cs" t="Include" />
-          </e>
-          <e p="UseCases" t="Include">
-            <e p="ReverseName" t="Include">
-              <e p="ReverseNameResponse.cs" t="Include" />
-              <e p="ReverserNameUseCase.cs" t="Include" />
-              <e p="WhitespacePolicy.cs" t="Include" />
-            </e>
-          </e>
-        </e>
       </e>
       <e p="IntegrationTests" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="CreateJobTest.cs" t="Include" />
         <e p="HealthCheck.cs" t="Include" />
         <e p="IntegrationTests.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
@@ -113,12 +123,12 @@
             </e>
           </e>
         </e>
-        <e p="UserTest.cs" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="Tests" t="Include" />
       <e p="UnitTests" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="JobTest.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
@@ -126,7 +136,6 @@
             </e>
           </e>
         </e>
-        <e p="ReverseNameUseCaseTest.cs" t="Include" />
         <e p="UnitTests.csproj" t="IncludeRecursive" />
       </e>
     </e>

@@ -9,7 +9,7 @@ namespace Domain
         Task<ICollection<TEntity>> FindAll();
         Task<TEntity> FindById(TId id);
         Task Update(TEntity car);
-        Task Update(ICollection<UserEntity> users);
-        Task Delete(UserEntity user);
+        Task Update(ICollection<Job> jobs);
+        Task Delete(Job job);
     }
 }
